@@ -32,7 +32,7 @@ export class FileUtils
 	{
 		return new Promise<void>((resolve, reject) =>
 		{
-			fs.appendFile(filePath, text, (err: NodeJS.ErrnoException) =>
+			fs.appendFile(filePath, text, (err: NodeJS.ErrnoException | null) =>
 			{
 				if (err)
 				{
@@ -50,7 +50,7 @@ export class FileUtils
 	{
 		return new Promise<string[]>((resolve, reject) =>
 		{
-			fs.readdir(folderPath, (err: NodeJS.ErrnoException, files: string[]) =>
+			fs.readdir(folderPath, (err: NodeJS.ErrnoException | null, files: string[]) =>
 			{
 				if (err)
 				{
@@ -68,7 +68,7 @@ export class FileUtils
 	{
 		return new Promise<void>((resolve, reject) =>
 		{
-			fs.writeFile(filePath, buffer, "binary", (err: NodeJS.ErrnoException) =>
+			fs.writeFile(filePath, buffer, "binary", (err: NodeJS.ErrnoException | null) =>
 			{
 				if (err)
 				{
@@ -88,7 +88,7 @@ export class FileUtils
 		return new Promise<void>((resolve, reject) =>
 		{
 			// You have to have node v14 or newer for this!
-			fs.rm(filePath, {recursive: true}, (err: NodeJS.ErrnoException) =>
+			fs.rm(filePath, {recursive: true}, (err: NodeJS.ErrnoException | null) =>
 			{
 				if (err)
 				{
@@ -106,7 +106,7 @@ export class FileUtils
 	{
 		return new Promise<void>((resolve, reject) =>
 		{
-			fs.mkdir(path, (err: NodeJS.ErrnoException) =>
+			fs.mkdir(path, (err: NodeJS.ErrnoException | null) =>
 			{
 				if (err)
 				{

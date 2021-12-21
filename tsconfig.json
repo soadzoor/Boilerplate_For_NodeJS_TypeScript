@@ -10,6 +10,7 @@
     "sourceMap": true,
     "outDir": "build/prod/src",
     "allowSyntheticDefaultImports": true,
+    "strict": true,
     "strictNullChecks": true,
     "noImplicitAny": true,
     "noImplicitOverride": true,
