@@ -1,0 +1,118 @@
+{
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"ecmaVersion": 2020
+	},
+	"settings": {
+		"import/resolver": {
+			"typescript": {},
+			"node": {
+				"extensions": [
+					".js",
+					".jsx",
+					".ts",
+					".tsx"
+				]
+			}
+		}
+	},
+	"extends": [
+		"plugin:import/errors",
+		"plugin:import/warnings",
+		"plugin:import/typescript"
+	],
+	"plugins": [
+		"import",
+		"@typescript-eslint",
+		"unused-imports"
+	],
+	"rules": {
+		"@typescript-eslint/consistent-type-assertions": [
+			"error",
+			{
+				"assertionStyle": "as"
+			}
+		],
+		// We're using typescript's resolver
+		"import/no-unresolved": "off",
+		"eol-last": [
+			"error",
+			"always"
+		],
+		"no-trailing-spaces": "error",
+		"space-before-function-paren": [
+			"error",
+			{
+				"anonymous": "always",
+				"named": "never",
+				"asyncArrow": "always"
+			}
+		],
+		"linebreak-style": [
+			"error",
+			"unix"
+		],
+		"no-multiple-empty-lines": [
+			"error",
+			{
+				"max": 2,
+				"maxEOF": 1,
+				"maxBOF": 0
+			}
+		],
+		"no-extra-semi": "error",
+		"no-unreachable": "error",
+		"quotes": [
+			"error",
+			"double"
+		],
+		"prefer-template": "error",
+		"brace-style": [
+			"warn",
+			"allman",
+			{
+				"allowSingleLine": true
+			}
+		],
+		"object-curly-spacing": [
+			"error",
+			"never"
+		],
+		"no-useless-concat": "error",
+		"curly": "error",
+		"indent": [
+			"error",
+			"tab",
+			{
+				"SwitchCase": 1
+			}
+		],
+		"no-alert": [
+			"error"
+		],
+		"dot-location": [
+			"warn",
+			"property"
+		],
+		"import/no-cycle": "error",
+		"import/no-self-import": "error",
+		"import/no-duplicates": "error",
+		"import/order": "error",
+		"import/no-unused-modules": [
+			"error",
+			{
+				"unusedExports": true,
+				"missingExports": true
+			}
+		],
+		"import/no-extraneous-dependencies": "error",
+		"unused-imports/no-unused-imports": "error",
+		"no-multi-spaces": "error",
+		"no-empty-function": "error",
+		"keyword-spacing": "error",
+		"semi": [
+			"error",
+			"always"
+		]
+	}
+}

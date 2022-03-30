@@ -1,6 +1,4 @@
-import {FileUtils} from "utils/FileUtils";
-
-export class Main
+class Main
 {
 	constructor()
 	{
@@ -16,4 +14,5 @@ export class Main
 	}
 }
 
-const main = new Main();
+// eslint-disable-next-line import/no-unused-modules
+export const main = new Main();

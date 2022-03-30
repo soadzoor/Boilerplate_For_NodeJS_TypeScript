@@ -6,11 +6,15 @@
   "directories": {
     "doc": "docs"
   },
+  "type": "module",
   "scripts": {
     "build": "node build/build",
     "build:prod": "node build/build --prod",
     "start": "node build/dev/js/app.bundle.js",
-    "start:prod": "node build/prod/js/app.bundle.js"
+    "start:prod": "node build/prod/js/app.bundle.js",
+    "eslint:report": "eslint --ext .js,.jsx,.ts,.tsx src --report-unused-disable-directives --max-warnings 0",
+    "eslint:fix": "npm run eslint:report -- --fix",
+    "install git hooks": "husky install"
   },
   "repository": {
     "type": "git",
@@ -18,11 +22,24 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "@types/node": "17.0.2",
-    "esbuild": "0.14.6",
-    "shx": "0.3.3",
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "bash -c tsc -p tsconfig.json",
+      "eslint --fix"
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "17.0.23",
+    "@typescript-eslint/eslint-plugin": "5.17.0",
+    "esbuild": "0.14.29",
+    "eslint": "8.12.0",
+    "eslint-import-resolver-typescript": "2.7.0",
+    "eslint-plugin-import": "2.25.4",
+    "eslint-plugin-unused-imports": "2.0.0",
+    "husky": "7.0.4",
+    "lint-staged": "12.3.7",
+    "shx": "0.3.4",
     "tslib": "2.3.1",
-    "typescript": "4.5.4"
+    "typescript": "4.6.3"
   }
 }

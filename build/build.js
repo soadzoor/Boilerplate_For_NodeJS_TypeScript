@@ -1,9 +1,14 @@
-const LOCAL_ROOT = ".";
+import fs from "fs";
+import esbuild from "esbuild";
+import child_process from "child_process";
+
+const {build} = esbuild;
+
 const BUILD_DEV = "build/dev";
 const BUILD_PROD = "build/prod";
 const BUILD_TEMP = "build/temp";
 const NODE_MODULES_PATH = "./node_modules";
-const fs = require("fs"); // it's included in node.js by default, no need for any additional packages
+
 const args = process.argv.slice(2);
 if (args.includes("--prod"))
 {
@@ -12,8 +17,6 @@ if (args.includes("--prod"))
 const isProduction = process.env.NODE_ENV === "production";
 const buildFolder = isProduction ? BUILD_PROD : BUILD_DEV;
 const checkForTypeErrors = !args.includes("--fast");
-
-const {build} = require("esbuild");
 
 buildApp();
 
@@ -29,11 +32,11 @@ async function buildApp()
 		{
 			if (isProduction)
 			{
-				res = exec("tsc", "--noEmit");
+				exec("tsc", "--noEmit");
 			}
 			else
 			{
-				res = exec("tsc", `--incremental --composite false --tsBuildInfoFile ${BUILD_TEMP}/tsconfig.tsbuildinfo`);
+				exec("tsc", `--noEmit --incremental --composite false --tsBuildInfoFile ${BUILD_TEMP}/tsconfig.tsbuildinfo`);
 			}
 		}
 		catch (e)
@@ -91,7 +94,7 @@ function exec(command, args)
 	let result;
 	try
 	{
-		result = require("child_process").execSync(command + " " + args, {stdio: stdio});
+		result = child_process.execSync(command + " " + args, {stdio: stdio});
 	}
 	catch (e)
 	{
@@ -163,8 +166,8 @@ function buildJs(buildFolder)
 		platform: "node",
 		//splitting: true, // for dynamic import (await import)
 		//outdir: buildFolder,
-		outfile: jsFile
-		//format: "esm"
+		outfile: jsFile,
+		format: "esm"
 	};
 
 	console.log("\x1b[33m%s\x1b[0m", "Bundling js...");

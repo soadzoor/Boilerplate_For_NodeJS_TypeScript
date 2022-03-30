@@ -80,7 +80,7 @@ export class FileUtils
 				}
 			});
 		});
-		
+
 	}
 
 	public static removeFileOrDir(filePath: string)
