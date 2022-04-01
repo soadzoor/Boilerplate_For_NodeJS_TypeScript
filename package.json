@@ -12,7 +12,7 @@
     "build:prod": "node build/build --prod",
     "start": "node build/dev/js/app.bundle.js",
     "start:prod": "node build/prod/js/app.bundle.js",
-    "eslint:report": "eslint --ext .js,.jsx,.ts,.tsx src --report-unused-disable-directives --max-warnings 0",
+    "eslint:report": "eslint --ignore-path .gitignore --ext .js,.jsx,.ts,.tsx src --report-unused-disable-directives --max-warnings 0",
     "eslint:fix": "npm run eslint:report -- --fix",
     "install git hooks": "husky install"
   },

@@ -113,6 +113,7 @@
 		"semi": [
 			"error",
 			"always"
-		]
+		],
+		"no-unneeded-ternary": "error"
 	}
 }
